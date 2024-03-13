@@ -1,0 +1,25 @@
+<section class="stockExchange">
+    <form 
+        class="stockExchange__form"
+        [formGroup]="stockExchangeForm"
+        >
+        <custom-select
+            id="intervalTime"
+            formControlName="interval"
+            [list]="INTERVAL_TIME"
+            placeholder="Select the time interval"
+            >
+        </custom-select>
+        <button
+            (click)="sendInterval()"
+            [disabled]="stockExchangeForm.invalid"
+            >
+            Get prices
+        </button>
+    </form>
+    <ng-container *ngFor="let price of minMaxPrice()">
+        <p>
+            Over the selected period of time, the price has changed from {{ price.min }} and to {{ price.max }}
+        </p>
+    </ng-container>
+</section>
